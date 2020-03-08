@@ -1,0 +1,44 @@
+﻿# Name:  Ryan Hutton
+# Assignment: Final Project Script Four - Pattern Search and Replace
+# Course:  IT 140 - Introduction to Scripting
+# Institution:  Southern New Hampshire University
+# Date:  17 February 2019
+
+# Prompt: Your task for this script project is to create a simple pattern search
+# script.  This script emphasizes the importance of regular expressions and their
+# utility for searching, replacing, and managing large volumes of textual data. 
+
+import re
+
+#The paragraph below is the text used to apply the pattern search and replace requirements.
+
+lorem_ipsum = '''Lorem ipsum dolor sit-amet, consectetur adipiscing elit. Phasellus iaculis velit ac nunc interdum tempor. 
+Ut volutpat elit metus, vel auctor enim commodo at. Nunc quis quam non ligula ultricies luctus porta id justo. 
+Quisque dapibus est ut sagittis bibendum. Mauris ullamcorper pellentesque porttitor. Ut sit:amet ex nec dolor gravida 
+porttitor. Proin at justo finibus justo vestibulum congue. Suspendisse et ipsum et ipsum eleifend dapibus a fermentum 
+lacus. Vivamus porta nunc eu nisl sagittis, quis vulputate metus dignissim. Integer non fermentum nisl, id vestibulum 
+elit. Sed euismod vestibulum purus ut porttitor. Integer sit-amet mollis neque. Donec sed lacinia diam, ac finibus 
+lectus. Mauris tempor ipsum nisl, vitae posuere est lacinia nec. Nam eget euismod odio.'''
+
+# The 're' module is imported from Python above.  Below, a function, findall(...), is used to 
+# find all occurrences of non-alphanumeric characters in the lorem_ipsum paragraph above.
+# This is accomplished by passing the regular expression "r'\W'".  The result is then 
+# stored in a string.  To obtain the number of instances of the characters, then len function
+# is called to return the length of the string results, which is outputted to the console.
+results = re.findall(r'\W', lorem_ipsum)
+print(len(results))
+
+# Function findall is used here again to search for all occurrences of "sit-amet" or
+# "sit:amet".  To include either occurrence, the regular expression operator '|' is used.
+# Once again, the result of the findall is stored in a string variable and the length of the 
+# string is printed out.
+occurrance_sit_amet = re.findall(r'sit-amet|sit:amet', lorem_ipsum)
+print(len(occurrance_sit_amet))
+
+# The sub function is called here to substitute all occurrences of "sit-amet" and "sit:amet"
+# with "sit amet" and is stored in a string.  Next, the function findall, searches for
+# all occurrences of the new text sit amet within the variable replace_results and outputs
+# the number of occurrences.
+replace_results = re.sub(r'sit-amet|sit:amet', 'sit amet', lorem_ipsum)
+occurrance_sit_amet = re.findall(r'sit amet', replace_results)
+print(len(occurrance_sit_amet))
